@@ -37,7 +37,12 @@ io.on('connect',(socket) => {
         })
     })
 
-    
+    socket.on('disconnect',(reason)=>{
+        console.log(`${socket.id} disconnect`)
+        connection.filter(con =>{
+            con.id !== socket.id
+        })
+    })
 
 
 })
