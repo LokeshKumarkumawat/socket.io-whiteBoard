@@ -11,10 +11,35 @@ app.get('/', (req, res) => {
 })
 
 const io = require('socket.io')(http)
+const connection = [];
 
 io.on('connect',(socket) => {
+    connection.push(socket)
     console.log(`${socket.id} connected`)
+
+
+
+    socket.on('draw',(data) =>{
+        connection.forEach(con => {
+            if(con.id !== socket.id){
+                con.emit('ondraw',{x:data.x, y:data.y})
+            }
+        })
+    })
+
+
+
+    socket.on('down',(data)=>{
+        connection.forEach(con =>{
+            if(con.id !== socket.id){
+                con.emit('ondown',{x:data.x, y:data.y})
+            }
+        })
+    })
+
     
+
+
 })
 
 http.listen(process.env.PORT,() => console.log(`listening on port ${process.env.PORT}`))
