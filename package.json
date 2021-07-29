@@ -1,0 +1,8 @@
+{
+  "name": "socketio_whiteBoard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:LokeshKumarkumawat/socket.io-whiteBoard.git",
+  "author": "lokeshKumar <lokeshkumargithub@gmail.com>",
+  "license": "MIT"
+}
